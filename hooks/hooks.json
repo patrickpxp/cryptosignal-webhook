@@ -1,0 +1,7 @@
+[
+  {
+    "id": "telegram-push",
+    "execute-command": "/etc/webhook/telegram.sh",
+    "command-working-directory": "/etc/webhook"
+  }
+]

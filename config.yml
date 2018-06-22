@@ -1,0 +1,329 @@
+# Copy this file to config.yml to get started and then add your own configuration.
+# Full documentation here: https://github.com/CryptoSignal/crypto-signal/blob/master/docs/config.md
+
+settings:
+  update_interval: 10
+  market_pairs:
+#    - BTC/EUR
+#    - ETH/EUR
+#    - LTC/EUR
+#    - LTC/BTC
+#    - ETH/BTC
+    - ADA/BTC
+#    - ADA/USDT
+#    - TRX/BTC
+#    - SRN/BTC
+#    - EOS/BTC
+#    - XRP/BTC
+#    - GNT/ETH
+#    - GNT/BTC
+#    - XLM/BTC
+#    - ADA/BNB
+#    - SNT/BTC
+#    - MANA/BTC
+#    - SNT/ETH
+#    - MANA/ETH
+#    - INT/ETH
+
+exchanges:
+  bittrex:
+    required:
+      enabled: false
+  gdax:
+    required:
+      enabled: false
+  binance:
+    required:
+      enabled: true
+  bitfinex:
+    required:
+      enabled: false
+  okex:
+    required:
+      enabled: false
+
+indicators:
+    rsi:
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          signal:
+            - rsi
+          hot: 30
+          cold: 70
+          candle_period: 1d
+          period_count: 14
+        - enabled: false
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - rsi
+          hot: 30
+          cold: 70
+          candle_period: 1h
+          period_count: 14
+    stoch_rsi:
+        - enabled: true
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - stoch_rsi
+          hot: 20
+          cold: 80
+          candle_period: 1d
+          period_count: 14
+        - enabled: true
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - slow_k
+          hot: 20
+          cold: 80
+          candle_period: 1d
+          period_count: 14
+        - enabled: true
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - slow_d
+          hot: 20
+          cold: 80
+          candle_period: 1d
+          period_count: 14
+    momentum:
+        - enabled: false
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - momentum
+          hot: 0
+          cold: 0
+          candle_period: 1d
+          period_count: 10
+        - enabled: false
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - momentum
+          hot: 0
+          cold: 0
+          candle_period: 1h
+          period_count: 12
+    macd:
+        - enabled: true
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - macd
+          hot: 0
+          cold: 0
+          candle_period: 1h
+        - enabled: true
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - macdsignal
+          hot: 0
+          cold: 0
+          candle_period: 1h
+        - enabled: true
+          alert_enabled: false
+          alert_frequency: once
+          signal:
+            - macdhist
+          hot: 0
+          cold: 0
+          candle_period: 1d
+    obv:
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          signal:
+            - obv
+          hot: 0
+          cold: 0
+          candle_period: 30m
+    mfi:
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          signal:
+            - mfi
+          hot: 20
+          cold: 80
+          candle_period: 15m
+          period_count: 14
+    ichimoku:
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          signal:
+            - leading_span_a
+            - leading_span_b
+          hot: true
+          cold: true
+          candle_period: 4h
+
+informants:
+    ema:
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 20
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 25
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 30
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 35
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 40
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 45
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 50
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 1d
+          period_count: 12
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 55
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 1d
+          period_count: 26
+        - enabled: true
+          signal:
+            - ema
+          candle_period: 15m
+          period_count: 2
+    bollinger_bands:
+        - enabled: true
+          signal:
+            - upperband
+          candle_period: 15m
+          period_count: 20
+        - enabled: true
+          signal:
+            - middleband
+          candle_period: 15m
+          period_count: 20
+        - enabled: true
+          signal:
+            - lowerband
+          candle_period: 15m
+          period_count: 20
+    ohlcv:
+        - enabled: true
+          signal:
+           - close
+          candle_period: 1d
+          period_count: 15
+
+crossovers:
+    std_crossover:
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          key_indicator: ema
+          key_indicator_index: 0
+          key_indicator_type: informants
+          key_signal: ema
+          crossed_indicator: ema
+          crossed_indicator_index: 6
+          crossed_indicator_type: informants
+          crossed_signal: ema
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          key_indicator: macd
+          key_indicator_index: 0
+          key_indicator_type: indicators
+          key_signal: macd
+          crossed_indicator: macd
+          crossed_indicator_index: 1
+          crossed_indicator_type: indicators
+          crossed_signal: macdsignal
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          key_indicator: ema
+          key_indicator_index: 7
+          key_indicator_type: informants
+          key_signal: ema
+          crossed_indicator: ema
+          crossed_indicator_index: 9
+          crossed_indicator_type: informants
+          crossed_signal: ema
+        - enabled: false
+          alert_enabled: true
+          alert_frequency: once
+          key_indicator: ema
+          key_indicator_index: 10
+          key_indicator_type: informants
+          key_signal: ema
+          crossed_indicator: bollinger_bands
+          crossed_indicator_index: 0
+          crossed_indicator_type: informants
+          crossed_signal: upperband
+        - enabled: false
+          alert_enabled: true
+          alert_frequency: once
+          key_indicator: ema
+          key_indicator_index: 10
+          key_indicator_type: informants
+          key_signal: ema
+          crossed_indicator: bollinger_bands
+          crossed_indicator_index: 2
+          crossed_indicator_type: informants
+          crossed_signal: lowerband
+        - enabled: true
+          alert_enabled: true
+          alert_frequency: once
+          key_indicator: stoch_rsi
+          key_indicator_index: 1
+          key_indicator_type: indicators
+          key_signal: slow_k
+          crossed_indicator: stoch_rsi
+          crossed_indicator_index: 2
+          crossed_indicator_type: indicators
+          crossed_signal: slow_d
+
+notifiers:
+#    telegram:
+#        required:
+#            token: yourtoken
+#            chat_id: yourchatid
+#        optional:
+#            parse_mode: html
+#            template: "[{{analysis.config.candle_period}} / {{analysis.config.period_count}}] {{exchange}}-{{market}}-{{indicator}}-{{indicator_number}} is {{status}}! ({{values}}){{ '\n' -}}"
+    webhook:
+        required:
+            url: http://webhook:9000/hooks/telegram-push
+        optional:
+            username: abcd1234
+            password: abcd1234
