@@ -6,12 +6,19 @@ services:
     volumes:
       - ./config.yml:/app/config.yml
     depends_on:
-      - webhook
-  webhook:
+      - flask
+  # webhook:
+  #   build: .
+  #   image: patrickpxp/webhook
+  #   volumes:
+  #     - ./hooks:/etc/webhook
+  #   ports:
+  #     - "9000:9000"
+  #   command: -hotreload -verbose -hooks=/etc/webhook/hooks.json
+  flask:
     build: .
     image: patrickpxp/webhook
     volumes:
-      - ./hooks:/etc/webhook
+      - ./:/app
     ports:
-      - "9000:9000"
-    command: -hotreload -verbose -hooks=/etc/webhook/hooks.json
+      - "8000:8000"

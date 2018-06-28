@@ -323,7 +323,8 @@ notifiers:
 #            template: "[{{analysis.config.candle_period}} / {{analysis.config.period_count}}] {{exchange}}-{{market}}-{{indicator}}-{{indicator_number}} is {{status}}! ({{values}}){{ '\n' -}}"
     webhook:
         required:
-            url: http://webhook:9000/hooks/telegram-push
+            url: http://flask:8000/hooks
         optional:
             username: abcd1234
             password: abcd1234
+            template: "{{analysis.result}}"
